@@ -42,3 +42,6 @@ cd servidor/node3  -> python node3.py
 cd servidor/node4  -> python node4.py
 
 cd cliente  ->  python client.py
+
+### Observações: 
+Quando derrubar um nó, esperar um certo tempo para tentar inserir novamente
