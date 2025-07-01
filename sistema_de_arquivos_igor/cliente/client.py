@@ -65,7 +65,7 @@ def main():
 
                     if not caminho_local.is_file():
                         raise FileNotFoundError(f"Arquivo '{nome_arq}' não encontrado localmente.")
-                    
+                    inicio_operacao = time.time() # Marca o tempo ANTES da operação
                     # Lógica de enviar em chunks para o API Manager
                     with open(caminho_local, "rb") as f:
                         indice = 1
@@ -73,16 +73,20 @@ def main():
                             chunk = f.read(CHUNK_SIZE)
                             if not chunk:
                                 break
-                            
+
                             sistema_api.receber_chunk(nome_arq, chunk)
                             indice += 1
 
                     # Finaliza o processo
                     print("Todos os chunks enviados. Finalizando o upload...")
-                    mensagem_final, tempo = sistema_api.finalizar_upload(nome_arq)
+                    mensagem_final = sistema_api.finalizar_upload(nome_arq)
+                    fim_operacao = time.time()   # Marca o tempo DEPOIS da operação
+                    tempo_decorrido = fim_operacao - inicio_operacao
                     tamanho_bytes = os.path.getsize(caminho_local)
-                    print(f"Resposta do Servidor: Envio concluido com sucesso em {tempo} segundos ({tamanho_bytes/1024/1024/tempo} mb/s)")
-        
+                    if mensagem_final:
+                        print(f"Resposta do Servidor: Envio concluido com sucesso em {tempo_decorrido} segundos ({tamanho_bytes/1024/1024/tempo_decorrido} mb/s)")
+                    else:
+                        print("Erro ao realizar o upload do arquivo")
                 except Exception as e:
                     print(f"Erro durante o upload: {e}")
             elif opcao == "3":

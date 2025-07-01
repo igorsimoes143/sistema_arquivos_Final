@@ -361,14 +361,11 @@ class sist_arq:
             print(f"Upload completo de '{nome_arq}' recebido. Disparando distribuição em segundo plano...")
 
             try:
-                inicio_operacao = time.time() # Marca o tempo ANTES da operação
                 resultado_distribuicao = self._inserir(nome_arq, str(caminho_temporario))
-                fim_operacao = time.time()   # Marca o tempo DEPOIS da operação
-                tempo_decorrido = fim_operacao - inicio_operacao
                 print(f"Distribuição de '{nome_arq}' concluída com sucesso.")
                 # Se _inserir terminar sem erros, retorna a mensagem de sucesso para o cliente.
                 caminho_temporario.unlink()
-                return resultado_distribuicao, tempo_decorrido
+                return resultado_distribuicao
 
             except Exception as e:
                
