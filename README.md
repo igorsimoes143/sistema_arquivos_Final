@@ -26,11 +26,19 @@ Os arquivos do cliente devem estar na pasta cliente, no mesmo nível que o scrip
 ### Passos para devido funcionamento: (seguir nessa ordem)
 
 python -m Pyro5.nameserver -n hostname
+
 cd servidor/api_manager  ->  python api_manager.py
+
 cd servidor/metadados  ->  python file_map.py
+
 cd servidor/monitor  ->  python monitor.py
+
 cd servidor/node1  -> python node1.py
+
 cd servidor/node2  -> python node2.py
+
 cd servidor/node3  -> python node3.py
+
 cd servidor/node4  -> python node4.py
+
 cd cliente  ->  python client.py
