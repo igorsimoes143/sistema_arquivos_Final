@@ -5,7 +5,7 @@
 ### Cliente: 
 Inserir o ip onde o nameserver está localizado em os.environ["PYRO_BROADCAST_ADDRS"] = "172.16.5.82, 192.168.0.5, 192.168.3.92, 192.168.3.188"
 
-
+ 
 ### Demais componentes: 
 
 Basta substituir o ip abaixo
