@@ -16,7 +16,9 @@ ip_name_server = '192.168.0.5' -> substituir pelo ip onde rodará o nameserver
 
 
 ### Rodar o name server:
+
 python -m Pyro5.nameserver -n hostname
+
 Substituir hostname pelo ip onde rodará o nameserver
 
 Os arquivos do cliente devem estar na pasta cliente, no mesmo nível que o script client.py
